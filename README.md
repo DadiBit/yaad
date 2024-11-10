@@ -77,6 +77,11 @@ _Usually_, it is safe, since android protects you from breaking your device.
     - [ ] Xiaomi Redmi Note 12
         - [ ] Xiaomi HyperOS 1.0.11.0.UMGEUXM - Android 14 UKQ1.230917.001
 
+## Resources
+
+- [uad-ng](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation)
+- [milaq](https://milaq.net/android-bloatware/)
+
 ## License
 
 [MIT](LICENSE)
