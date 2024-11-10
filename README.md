@@ -29,11 +29,17 @@ adb push core.sh /data/local/tmp/yaad/core.sh
 adb push tasks.sh /data/local/tmp/yaad/tasks.sh
 ```
 
-Run the `core.sh` script, with the `tasks.sh` as argument:
+Run the `core.sh` script:
 
 ```bash
-adb shell sh /data/local/tmp/yaad/core.sh /data/local/tmp/yaad/tasks.sh
+adb shell sh /data/local/tmp/yaad/core.sh
 ```
+
+### Environment variables
+
+- `PM_USER_ID`: User ID to use for `cmd package`/`pm` commands (default: `0`)
+- `YAAD_DIR`: Directory where YAAD files are located (default: same directory as `core.sh`)
+- `TASKS_FILE`: Tasks file to use (default: `$YAAD_DIR/tasks.sh`)
 
 ## TODO
 

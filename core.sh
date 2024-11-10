@@ -1,6 +1,9 @@
 #!/system/bin/env sh
 
+# Default environment variables
 : "${PM_USER_ID:=0}"
+: "${YAAD_DIR:="$(dirname "$0")"}"
+: "${TASKS_FILE:="$YAAD_DIR/tasks.sh"}"
 
 cmd_package_service_exists=1 #false
 
@@ -22,12 +25,14 @@ fi
 __pm() {
     ([ $cmd_package_service_exists -eq 0 ] && cmd package "$@" >/dev/null 2>&1) \
     || if [ "$1" = "uninstall" ]; then
+        # uninstall always returns 0 (even if it fails)
         [ "$(pm "$@" 2>/dev/null)" = "Success" ]
     else
         pm "$@" >/dev/null 2>&1
     fi
 }
 
+# Disable a package
 disable() {
     package="$1"
     printf "....... disable %s" "$package"
@@ -44,6 +49,7 @@ disable() {
     fi
 }
 
+# Remove a package
 remove() {
     package="$1"
     printf "....... remove  %s" "$package"
@@ -60,9 +66,6 @@ remove() {
 install() {
     package="$1"
     printf "....... install %s" "$package"
-    # TODO
-    printf "\rskipped\n"
-}
-
+# Source tasks file instead of creating new shell via `sh` -> share functions
 # shellcheck disable=SC1090
-. "$1"
+. "$TASKS_FILE"
