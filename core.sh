@@ -1,6 +1,6 @@
 #!/system/bin/env sh
 
-: "${USER_ID:=0}"
+: "${PM_USER_ID:=0}"
 
 cmd_package_service_exists=1 #false
 
@@ -29,7 +29,7 @@ remove() {
     printf "....... remove  %s" "$package"
     if __pm uninstall -k "$package"; then
         printf "\rsuccess\n"
-    elif __pm uninstall -k --user "$USER_ID" "$package"; then
+    elif __pm uninstall -k --user "$PM_USER_ID" "$package"; then
         printf "\rpartial\n"
     else
         printf "\rfailure\n"
