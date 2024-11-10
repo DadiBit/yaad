@@ -18,10 +18,14 @@ elif ! command -v pm >/dev/null 2>&1; then
     exit 1
 fi
 
-# generic pm proxy: tries to run cmd if available, if not, uses pm
+# try to run cmd if available, if not, use pm
 __pm() {
-    ([ $cmd_package_service_exists -eq 0 ] && cmd package "$@" >/dev/null) \
-    || [ "$(pm "$@" 2>/dev/null)" = "Success" ]
+    ([ $cmd_package_service_exists -eq 0 ] && cmd package "$@" >/dev/null 2>&1) \
+    || if [ "$1" = "uninstall" ]; then
+        [ "$(pm "$@" 2>/dev/null)" = "Success" ]
+    else
+        pm "$@" >/dev/null 2>&1
+    fi
 }
 
 remove() {
