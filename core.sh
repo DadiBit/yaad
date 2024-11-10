@@ -1,5 +1,6 @@
 #!/system/bin/env sh
 
+: "${USER_ID:=0}"
 
 cmd_package_service_exists=1 #false
 
@@ -17,22 +18,18 @@ elif ! command -v pm >/dev/null 2>&1; then
     exit 1
 fi
 
-# generic uninstall function
-# uses cmd if available (faster), otherwise pm
-__uninstall() {
-    if [ $cmd_package_service_exists -eq 0 ]; then
-        cmd package uninstall "$@" >/dev/null
-    else
-        test "$(pm uninstall "$@" 2>/dev/null)" = "Success"
-    fi
+# generic pm proxy: tries to run cmd if available, if not, uses pm
+__pm() {
+    ([ $cmd_package_service_exists -eq 0 ] && cmd package "$@" >/dev/null) \
+    || [ "$(pm "$@" 2>/dev/null)" = "Success" ]
 }
 
 remove() {
     package="$1"
     printf "....... remove  %s" "$package"
-    if __uninstall -k "$package"; then
+    if __pm uninstall -k "$package"; then
         printf "\rsuccess\n"
-    elif __uninstall -k --user 0 "$package"; then
+    elif __pm uninstall -k --user "$USER_ID" "$package"; then
         printf "\rpartial\n"
     else
         printf "\rfailure\n"
