@@ -43,6 +43,24 @@ adb shell sh /data/local/tmp/yaad/core.sh
 - `TASKS_FILE`: Tasks file to use (default: `$YAAD_DIR/tasks.sh`)
 - `PACKAGES_DIR`: Directory where packages apk are located (default: `$YAAD_DIR/packages`)
 
+## Is it safe?
+
+**DO YOUR OWN RESEARCH**
+
+_Usually_, it is safe, since android protects you from breaking your device.
+
+- If you disable a crucial package you might softbrick your device.
+- You can always factory reset your device, but that means you'll lose all your data.
+
+- Also, disabling a package might severely degrade your device performance/battery life:
+    1. Some apps are actually designed to balance performance and battery life.
+    2. If an activity crashes since its package is disabled and gets called continuously from another package, it will drain your battery and maybe cause your device to bootloop.
+
+- A good idea is to remove Google and OEM bloatware, and then very varefully picking more obscure apps.
+    - Search online for the package name to find if there's a good reason to keep it.
+
+- Sidenote: if you start with 200 packages, don't try to go below 100: it's silly and you'll break a bunch of stuff (NFC, WiFi, Bluetooth, battery, etc.)[^1].
+
 ## TODO
 
 - [ ] `cmd` -> `pm` fallback
@@ -62,3 +80,5 @@ adb shell sh /data/local/tmp/yaad/core.sh
 ## License
 
 [MIT](LICENSE)
+
+[^1]: I personally did it the first time, and the phone was unusable (it booted, but I couldn't call or run some apps) until I factory reset it. I reccommend removing all the Google non-essential apps in addition to OEM bloatware.
