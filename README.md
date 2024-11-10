@@ -22,11 +22,12 @@ Advantages of YAAD over other tools:
 
 ## Usage
 
-Push both `core.sh` and `tasks.sh` to your device:
+Push `core.sh`, `tasks.sh` and the `packages` directory (only needed for `install` task) to your device:
 
 ```bash
 adb push core.sh /data/local/tmp/yaad/core.sh
 adb push tasks.sh /data/local/tmp/yaad/tasks.sh
+adb push packages /data/local/tmp/yaad/packages
 ```
 
 Run the `core.sh` script:
@@ -40,6 +41,7 @@ adb shell sh /data/local/tmp/yaad/core.sh
 - `PM_USER_ID`: User ID to use for `cmd package`/`pm` commands (default: `0`)
 - `YAAD_DIR`: Directory where YAAD files are located (default: same directory as `core.sh`)
 - `TASKS_FILE`: Tasks file to use (default: `$YAAD_DIR/tasks.sh`)
+- `PACKAGES_DIR`: Directory where packages apk are located (default: `$YAAD_DIR/packages`)
 
 ## TODO
 

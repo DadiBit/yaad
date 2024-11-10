@@ -4,6 +4,7 @@
 : "${PM_USER_ID:=0}"
 : "${YAAD_DIR:="$(dirname "$0")"}"
 : "${TASKS_FILE:="$YAAD_DIR/tasks.sh"}"
+: "${PACKAGES_DIR:="$YAAD_DIR/packages"}"
 
 cmd_package_service_exists=1 #false
 
@@ -63,9 +64,21 @@ remove() {
     fi
 }
 
+# Install a package
 install() {
     package="$1"
     printf "....... install %s" "$package"
+    if [ ! -f "$PACKAGES_DIR/$package" ]; then
+        printf "\rfailure\n"
+    elif __pm install "$PACKAGES_DIR/$package"; then
+        printf "\rsuccess\n"
+    elif __pm install --user "$PM_USER_ID" "$PACKAGES_DIR/$package"; then
+        printf "\rpartial\n"
+    else
+        printf "\rfailure\n"
+    fi
+}
+
 # Source tasks file instead of creating new shell via `sh` -> share functions
 # shellcheck disable=SC1090
 . "$TASKS_FILE"
