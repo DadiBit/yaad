@@ -72,8 +72,10 @@ _Usually_, it is safe, since android protects you from breaking your device.
     - [ ] Huawei P20 Lite (ANE-L21)
         - [ ] EMUI 8.0.0.180(C432) - Android 8.0.0
         - [ ] EMUI 9.1.0.401(C432) - Android 9.1.0
-    - [ ] Huawei Ascend Y330 (Y330-U01)
-        - [ ] EmotionUI 2.0 - Android 4.2.2
+    - [x] Huawei Ascend Y330 (Y330-U01)
+        - [x] EmotionUI 2.0 - Android 4.2.2
+            - Confirmed not working without root on system apps
+            - Might be able to abuse accessibility services to disable apps
     - [ ] Xiaomi Redmi Note 12
         - [ ] Xiaomi HyperOS 1.0.11.0.UMGEUXM - Android 14 UKQ1.230917.001
 
