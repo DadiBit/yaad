@@ -36,19 +36,19 @@ adb shell sh /data/local/tmp/yaad/core.sh /data/local/tmp/yaad/tasks.sh
 
 ## TODO
 
-- [] `cmd` -> `pm` fallback
-- [] [uad-ng](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation) integration
-- [] device picking
-- [] root support
-- [] aggressive uninstall (don't keep data)
-- [] testing on real-world devices
-    - [] Huawei P20 Lite (ANE-L21)
-        - [] EMUI 8.0.0.180(C432) - Android 8.0.0
-        - [] EMUI 9.1.0.401(C432) - Android 9.1.0
-    - [] Huawei Ascend Y330 (Y330-U01)
-        - [] EmotionUI 2.0 - Android 4.2.2
-    - [] Xiaomi Redmi Note 12
-        - [] Xiaomi HyperOS 1.0.11.0.UMGEUXM - Android 14 UKQ1.230917.001
+- [ ] `cmd` -> `pm` fallback
+- [ ] [uad-ng](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation) integration
+- [ ] device picking
+- [ ] root support
+- [ ] aggressive uninstall (don't keep data)
+- [ ] testing on real-world devices
+    - [ ] Huawei P20 Lite (ANE-L21)
+        - [ ] EMUI 8.0.0.180(C432) - Android 8.0.0
+        - [ ] EMUI 9.1.0.401(C432) - Android 9.1.0
+    - [ ] Huawei Ascend Y330 (Y330-U01)
+        - [ ] EmotionUI 2.0 - Android 4.2.2
+    - [ ] Xiaomi Redmi Note 12
+        - [ ] Xiaomi HyperOS 1.0.11.0.UMGEUXM - Android 14 UKQ1.230917.001
 
 ## License
 
