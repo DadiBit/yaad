@@ -28,6 +28,22 @@ __pm() {
     fi
 }
 
+disable() {
+    package="$1"
+    printf "....... disable %s" "$package"
+    if __pm disable "$package"; then
+        printf "\rsuccess\n"
+    elif __pm disable --user "$PM_USER_ID" "$package"; then
+        printf "\rpartial\n"
+    elif __pm disable-user "$package"; then
+        printf "\rpartial\n"
+    elif __pm disable-user --user "$PM_USER_ID" "$package"; then
+        printf "\rpartial\n"
+    else
+        printf "\rfailure\n"
+    fi
+}
+
 remove() {
     package="$1"
     printf "....... remove  %s" "$package"
@@ -35,6 +51,7 @@ remove() {
         printf "\rsuccess\n"
     elif __pm uninstall -k --user "$PM_USER_ID" "$package"; then
         printf "\rpartial\n"
+        disable "$package"
     else
         printf "\rfailure\n"
     fi
