@@ -14,6 +14,7 @@ Advantages of YAAD over other tools:
     - Standard POSIX shell language
 2. Lightweight:
     - Limited `adb` calls (push & run script, pull history)
+    - Server needs only `adb push/pull` and `adb shell` commands
 3. No root required
 4. Flexible:
     - Can run anything (eg: your own binaries)
